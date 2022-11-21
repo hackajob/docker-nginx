@@ -12,7 +12,7 @@ declare branches=(
 # Current nginx versions
 # Remember to update pkgosschecksum when changing this.
 declare -A nginx=(
-    [mainline]='1.23.2'
+    [mainline]='1.23.1'
     [stable]='1.22.1'
 )
 
@@ -30,8 +30,8 @@ declare -A pkg=(
 )
 
 declare -A debian=(
-    [mainline]='bullseye'
-    [stable]='bullseye'
+    [mainline]='buster'
+    [stable]='buster'
 )
 
 declare -A alpine=(

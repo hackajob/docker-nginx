@@ -3,13 +3,13 @@
 #
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
-FROM debian:bullseye-slim
+FROM debian:buster-slim
 
 LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com>"
 
-ENV NGINX_VERSION   1.23.2
+ENV NGINX_VERSION   1.23.1
 ENV NJS_VERSION     0.7.7
-ENV PKG_RELEASE     1~bullseye
+ENV PKG_RELEASE     1~buster
 
 RUN set -x \
 # create nginx user/group first, to be consistent throughout docker variants
@@ -40,13 +40,13 @@ RUN set -x \
     && case "$dpkgArch" in \
         amd64|arm64) \
 # arches officialy built by upstream
-            echo "deb https://nginx.org/packages/mainline/debian/ bullseye nginx" >> /etc/apt/sources.list.d/nginx.list \
+            echo "deb https://nginx.org/packages/mainline/debian/ buster nginx" >> /etc/apt/sources.list.d/nginx.list \
             && apt-get update \
             ;; \
         *) \
 # we're on an architecture upstream doesn't officially build for
 # let's build binaries from the published source packages
-            echo "deb-src https://nginx.org/packages/mainline/debian/ bullseye nginx" >> /etc/apt/sources.list.d/nginx.list \
+            echo "deb-src https://nginx.org/packages/mainline/debian/ buster nginx" >> /etc/apt/sources.list.d/nginx.list \
             \
 # new directory for storing sources and .deb files
             && tempDir="$(mktemp -d)" \
